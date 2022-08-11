@@ -12,6 +12,8 @@ public class MainController {
     * @RequestMapping 에 http://localhost:8080 과 같은 도메인명과 포트는 적지 않는다.
     * 도메인명과 포트는 서버 설정에 따라 변하기 때문이다.*/
     @RequestMapping("/sbb")
+    /* @ResponseBody 어노테이션은 URL 요청에 대한 응답으로 문자열을 리턴하라는 의미이다.
+    * @ResponseBody 어노테이션을 생략하면 스프링부트는 "index"라는 이름의 템플릿 파일을 찾는다. */
     @ResponseBody
     public String index() {
         return "index";

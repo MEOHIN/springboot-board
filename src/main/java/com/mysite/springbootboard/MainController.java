@@ -16,6 +16,6 @@ public class MainController {
     * @ResponseBody 어노테이션을 생략하면 스프링부트는 "index"라는 이름의 템플릿 파일을 찾는다. */
     @ResponseBody
     public String index() {
-        return "index";
+        return "안녕하세요 SBB 에 오신것을 환영합니다.";
     }
 }

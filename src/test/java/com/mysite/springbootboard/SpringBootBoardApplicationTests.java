@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class SpringBootBoardApplicationTests {
@@ -14,21 +17,15 @@ class SpringBootBoardApplicationTests {
 
 
 	/**
-	 * Question 엔티티 객체를 생성하고 QuestionRepository 를 이용하여 그 값을 데이터베이스에 저장하는 테스트다.
+	 * 데이터베이스에 저장된 데이터를 조회하는 테스트다.
 	 */
 	@Test
 	void testJpa() {
-		Question q1 = new Question();    // Question 엔티티 객세 생성
-		q1.setSubject("sbb 가 무엇인가요?");
-		q1.setContent("sbb 에 대해서 알고 싶습니다.");
-		q1.setCreateDate(LocalDateTime.now());
-		this.questionRepository.save(q1);    // 첫 번째 질문 저장
-		
-		Question q2 = new Question();
-		q2.setSubject("스프링부트 모델 질문입니다.");
-		q2.setContent("id 는 자동으로 생성되나요?");
-		q2.setCreateDate(LocalDateTime.now());
-		this.questionRepository.save(q2);    // 두 번째 질문 저장
+		List<Question> all = this.questionRepository.findAll();    // question 테이블에 저장된 모드 데이터를 조회
+		assertEquals(2, all.size());    // 저장된 데이터는 총 2건이므로 리스트의 사이즈도 2다.
+
+		Question q = all.get(0);    // 리스트의 첫번째 데이터를 조회
+		assertEquals("sbb 가 무엇인가요?", q.getSubject());    // 리스트의 첫번째 데이터의 제목을 비교
 	}
 
 }

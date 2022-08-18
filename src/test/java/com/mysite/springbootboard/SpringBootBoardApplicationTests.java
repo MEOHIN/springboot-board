@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +23,7 @@ class SpringBootBoardApplicationTests {
 	/**
 	 * 질문 객체로부터 답변 리스트를 구한다.
 	 */
+	@Transactional
 	@Test
 	void testJpa() {
 		Optional<Question> oq = this.questionRepository.findById(2);

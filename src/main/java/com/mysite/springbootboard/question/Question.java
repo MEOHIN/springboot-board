@@ -1,5 +1,6 @@
-package com.mysite.springbootboard;
+package com.mysite.springbootboard.question;
 
+import com.mysite.springbootboard.answer.Answer;
 import lombok.Getter;
 import lombok.Setter;
 

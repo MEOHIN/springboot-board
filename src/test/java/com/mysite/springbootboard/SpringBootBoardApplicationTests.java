@@ -1,5 +1,9 @@
 package com.mysite.springbootboard;
 
+import com.mysite.springbootboard.answer.Answer;
+import com.mysite.springbootboard.answer.AnswerRepository;
+import com.mysite.springbootboard.question.Question;
+import com.mysite.springbootboard.question.QuestionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

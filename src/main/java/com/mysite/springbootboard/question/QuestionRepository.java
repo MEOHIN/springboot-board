@@ -1,4 +1,4 @@
-package com.mysite.springbootboard;
+package com.mysite.springbootboard.question;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

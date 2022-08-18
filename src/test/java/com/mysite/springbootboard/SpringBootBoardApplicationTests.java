@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
@@ -15,16 +15,22 @@ class SpringBootBoardApplicationTests {
 	@Autowired
 	private QuestionRepository questionRepository;
 
+	@Autowired
+	private AnswerRepository answerRepository;
+
 	/**
-	 * 데이터베이스에 저장된 질문 데이터를 조회하고 Question 리포지터리의 delete 메서드를 사용하여 데이터를 삭제한다.
+	 * Answer 엔티티 객체를 생성하고 AnswerRepository 를 이용하여 그 값을 데이터베이스에 저장한다.
 	 */
 	@Test
 	void testJpa() {
-		assertEquals(2, this.questionRepository.count());
-		Optional<Question> oq = this.questionRepository.findById(1);
+		Optional<Question> oq = this.questionRepository.findById(2);    // id 가 2인 질문 데이터
 		assertTrue(oq.isPresent());
 		Question q = oq.get();
-		this.questionRepository.delete(q);
-		assertEquals(1, this.questionRepository.count());
+
+		Answer a = new Answer();
+		a.setContent("네 자동으로 생성됩니다.");
+		a.setQuestion(q);    // 답변을 하려는 질문과 연결
+		a.setCreateDate(LocalDateTime.now());
+		this.answerRepository.save(a);
 	}
 }

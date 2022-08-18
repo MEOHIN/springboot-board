@@ -2,6 +2,7 @@ package com.mysite.springbootboard.question;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -21,7 +22,9 @@ public class QuestionController {
     private final QuestionRepository questionRepository;
 
     @RequestMapping("/question/list")
-    public String list() {
-        return "question_list";    // 템플릿 파일명을 반환
+    public String list(Model model) {
+        List<Question> questionList = this.questionRepository.findAll();    // 질문 목록 데이터 list 생성
+        model.addAttribute("questionList", questionList);    // Model 객체에 값을 저장
+       return "question_list";    // 템플릿 파일명을 반환
     }
 }

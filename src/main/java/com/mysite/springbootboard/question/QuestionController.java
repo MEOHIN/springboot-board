@@ -21,9 +21,11 @@ public class QuestionController {
 
     private final QuestionRepository questionRepository;
 
+    private final QuestionService questionService;
+
     @RequestMapping("/question/list")
     public String list(Model model) {
-        List<Question> questionList = this.questionRepository.findAll();    // 질문 목록 데이터 list 생성
+        List<Question> questionList = this.questionService.getList();    // 리파지토리대신 서비스를 사용
         model.addAttribute("questionList", questionList);    // Model 객체에 값을 저장
        return "question_list";    // 템플릿 파일명을 반환
     }

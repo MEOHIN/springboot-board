@@ -26,7 +26,8 @@ public class QuestionController {
     /**
      * 질문 상세 페이지에 대한 URL 을 매핑한다.
      *
-     * http://localhost:8080/question/detail/2의 숫자 2처럼 변하는 id 값을 얻을 때에는 @PathVariable 어노테이션을 사용해야 한다.
+     * PathVariable 어노테이션
+     * http://localhost:8080/question/detail/2의 숫자 2처럼 변하는 id 값을 얻을 때 사용한다.
      * RequestMapping(value="/question/detail/{매개변수}") 와 PathVariable("매개변수") 의 매개변수명이 동일해야 한다.
      *
      * @param model 모델 객체 생성

@@ -18,9 +18,9 @@ public class QuestionController {
 
     @RequestMapping("/question/list")
     public String list(Model model) {
-        List<Question> questionList = this.questionService.getList();    // 리파지토리대신 서비스를 사용
-        model.addAttribute("questionList", questionList);    // Model 객체에 값을 저장
-       return "question_list";    // 템플릿 파일명을 반환
+        List<Question> questionList = this.questionService.getList();
+        model.addAttribute("questionList", questionList);
+       return "question_list";
     }
 
     /**

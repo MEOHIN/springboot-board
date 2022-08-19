@@ -17,11 +17,13 @@
             <tr> 엘리먼트를 questionList 의 갯수만큼 반복하여 출력한다.
             questionList 에 저장된 데이터를 하나씩 꺼내 question 객체에 대입하여 반복구간 내에서 사용할 수 있게 한다.
             -->
-            <tr th:each="question : ${questionList}">
+            <tr th:each="question, index : ${questionList}">
                 <!--
-                앞의 반복문에서 얻은 question 객체의 제목을 <td> 엘리먼트의 텍스트로 출력한다.
+                앞의 반복문에서 얻은 question 객체의 제목을 출력하고 제목에 주소를 링크한다.
                 -->
-                <td th:text="${question.subject}"></td>
+                <td>
+                    <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+                </td>
                 <!--
                 앞의 반복문에서 얻은 question 객체의 작성날짜를 <td> 엘리먼트의 텍스트로 출력한다.
                 -->

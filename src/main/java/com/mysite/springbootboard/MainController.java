@@ -18,4 +18,14 @@ public class MainController {
     public String index() {
         return "안녕하세요 SBB 에 오신것을 환영합니다.";
     }
+
+    /**
+     * ROOT URL 인 "/" URL 을 매핑한다.
+     * @return question/list URL 페이지를 리다이렉트한다.
+     */
+    @RequestMapping("/")
+    public String root() {
+        // redirect:/question/list 는 /question/list URL 로 페이지를 리다이렉트 하라는 명령어
+        return "redirect:/question/list";
+    }
 }

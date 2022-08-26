@@ -11,6 +11,9 @@ import java.time.LocalDateTime;
 public class AnswerService {
     private final AnswerRepository answerRepository;
 
+    /**
+     * 답변 객체를 생성하고 저장한다.
+     */
     public void create(Question question, String content) {
         Answer answer = new Answer();
         answer.setContent(content);

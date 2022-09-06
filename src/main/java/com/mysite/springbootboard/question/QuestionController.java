@@ -41,13 +41,8 @@ public class QuestionController {
     }
 
     /**
-     * POST 방식으로 요청한 /question/create URL을 처리하기 위해 메서드 오버로딩
-     *
-     * @param subject 화면에서 입력한 제목
-     * @param content 화면에서 입력한 내용
-     * 질문 등록 템플릿에서 필드 항목으로 사용했던 subject,content 이름과 동일하게 해야한다.
-     *
-     * @return 질문이 저장되면 질문 목록 페이지로 이동
+     * bindResult.hasErrors()를 호출하여 오류가 없을 경우에만 질문 등록이 진행되도록 한다.
+     * 오류가 있는 경우에는 다시 폼을 작성하는 화면을 렌더링하게 한다.
      */
     @PostMapping("/create")
     public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult) {

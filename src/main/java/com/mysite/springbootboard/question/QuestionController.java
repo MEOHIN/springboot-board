@@ -49,7 +49,7 @@ public class QuestionController {
      */
     @PostMapping("/create")
     public String questionCreate(@RequestParam String subject, @RequestParam String content) {
-        // TODO 질문 저장
+        this.questionService.create(subject, content);
         return "redirect:/question/list";
     }
 }

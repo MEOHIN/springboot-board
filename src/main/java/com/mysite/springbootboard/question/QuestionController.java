@@ -36,7 +36,7 @@ public class QuestionController {
      * question_form 템플릿을 렌더링하여 출력한다.
      */
     @GetMapping("/create")
-    public String questionCreate() {
+    public String questionCreate(QuestionForm questionForm) {
         return "question_form";
     }
 

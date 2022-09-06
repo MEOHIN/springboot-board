@@ -3,9 +3,7 @@ package com.mysite.springbootboard.question;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +36,20 @@ public class QuestionController {
     @GetMapping("/create")
     public String questionCreate() {
         return "question_form";
+    }
+
+    /**
+     * POST 방식으로 요청한 /question/create URL을 처리하기 위해 메서드 오버로딩
+     *
+     * @param subject 화면에서 입력한 제목
+     * @param content 화면에서 입력한 내용
+     * 질문 등록 템플릿에서 필드 항목으로 사용했던 subject,content 이름과 동일하게 해야한다.
+     *
+     * @return 질문이 저장되면 질문 목록 페이지로 이동
+     */
+    @PostMapping("/create")
+    public String questionCreate(@RequestParam String subject, @RequestParam String content) {
+        // TODO 질문 저장
+        return "redirect:/question/list";
     }
 }

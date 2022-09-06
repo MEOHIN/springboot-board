@@ -34,7 +34,6 @@ public class QuestionController {
 
     /**
      * question_form 템플릿을 렌더링하여 출력한다.
-     * 버튼을 통한 /question/create 요청은 GET 요청이라서 @GetMapping 어노테이션을 사용한다
      */
     @GetMapping("/create")
     public String questionCreate() {

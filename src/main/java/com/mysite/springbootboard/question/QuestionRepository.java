@@ -1,5 +1,7 @@
 package com.mysite.springbootboard.question;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -26,4 +28,5 @@ public interface QuestionRepository extends JpaRepository<Question, Integer> {
      * @return 입력받은 값으로 식별되는 엔티티 List 를 반환한다.
      */
     List<Question> findBySubjectLike(String subject);
+    Page<Question> findAll(Pageable pageable);
 }

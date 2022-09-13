@@ -2,10 +2,12 @@ package com.mysite.springbootboard.question;
 
 import com.mysite.springbootboard.DataNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -15,11 +17,13 @@ public class QuestionService {
     private final QuestionRepository questionRepository;
 
     /**
-     * 질문목록을 조회하고 반환한다.
-     * @return 조회한 질문 목록
+     *
+     * @param page 조회할 페이지 번호
+     * @return
      */
-    public List<Question> getList() {
-        return this.questionRepository.findAll();
+    public Page<Question> getList(int page) {
+        Pageable pageable = PageRequest.of(page, 10);
+        return this.questionRepository.findAll(pageable);
     }
 
     /**

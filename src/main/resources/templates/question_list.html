@@ -15,7 +15,7 @@
             테이블 항목으로 추가한 번호는 loop.count 를 사용하여 표시
             -->
             <tr th:each="question, loop : ${paging}">
-                <td th:test="${loop.count}"></td>
+                <td th:text="${loop.count}"></td>
                 <!--
                 앞의 반복문에서 얻은 question 객체의 제목을 출력하고 제목에 주소를 링크한다.
                 -->

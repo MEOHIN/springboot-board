@@ -12,7 +12,8 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests().antMatchers("/**").permitAll();    // 모든 인증되지 않은 요청을 허락
+        httpSecurity.authorizeRequests().antMatchers("/**").permitAll()
+                .and().csrf().ignoringAntMatchers("/h2-console/**");    // 모든 인증되지 않은 요청을 허락
         return httpSecurity.build();
     }
 }

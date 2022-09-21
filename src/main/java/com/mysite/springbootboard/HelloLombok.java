@@ -2,7 +2,6 @@ package com.mysite.springbootboard;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 /**
  * @RequiredArgsConstructor 어노테이션을 적용하면 해당 속성을 필요로하는 생성자가 롬복에 의해 자동으로 생성된다.

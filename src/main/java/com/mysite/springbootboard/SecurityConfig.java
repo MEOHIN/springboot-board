@@ -12,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @RequiredArgsConstructor
 @Configuration
@@ -24,12 +25,19 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests().antMatchers("/**").permitAll()
                 .and()
-                .csrf().ignoringAntMatchers("/h2-console/**")
+                    .csrf().ignoringAntMatchers("/h2-console/**")
                 .and()
-                .headers().addHeaderWriter(new XFrameOptionsHeaderWriter(
-                        XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+                    .headers()
+                    .addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
                 .and()
-                .formLogin().loginPage("/user/login").defaultSuccessUrl("/");    // 로그인 설정을 담당
+                    .formLogin()
+                    .loginPage("/user/login")
+                    .defaultSuccessUrl("/")    // 로그인 설정을 담당
+                .and()
+                    .logout()
+                    .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+                    .logoutSuccessUrl("/")
+                    .invalidateHttpSession(true);
         return httpSecurity.build();
     }
 

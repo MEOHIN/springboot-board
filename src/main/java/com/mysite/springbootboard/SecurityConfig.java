@@ -20,7 +20,9 @@ public class SecurityConfig {
                 .csrf().ignoringAntMatchers("/h2-console/**")
                 .and()
                 .headers().addHeaderWriter(new XFrameOptionsHeaderWriter(
-                        XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN));
+                        XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+                .and()
+                .formLogin().loginPage("/user/login").defaultSuccessUrl("/");    // 로그인 설정을 담당
         return httpSecurity.build();
     }
 

@@ -5,6 +5,7 @@ import com.mysite.springbootboard.user.SiteUser;
 import com.mysite.springbootboard.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,9 +36,7 @@ public class QuestionController {
         return "question_detail";
     }
 
-    /**
-     * question_form 템플릿을 렌더링하여 출력한다.
-     */
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
     public String questionCreate(QuestionForm questionForm) {
         return "question_form";
@@ -47,6 +46,7 @@ public class QuestionController {
      * bindResult.hasErrors()를 호출하여 오류가 없을 경우에만 질문 등록이 진행되도록 한다.
      * 오류가 있는 경우에는 다시 폼을 작성하는 화면을 렌더링하게 한다.
      */
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
     public String questionCreate(@Valid QuestionForm questionForm, BindingResult bindingResult, Principal principal) {
         if (bindingResult.hasErrors()) {

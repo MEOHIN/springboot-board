@@ -15,8 +15,6 @@ import javax.validation.Valid;
 @Controller
 public class QuestionController {
 
-    private final QuestionRepository questionRepository;
-
     private final QuestionService questionService;
 
     @RequestMapping("/list")

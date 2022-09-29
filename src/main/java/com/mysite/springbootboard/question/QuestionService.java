@@ -20,11 +20,6 @@ public class QuestionService {
 
     private final QuestionRepository questionRepository;
 
-    /**
-     *
-     * @param page 조회할 페이지 번호
-     * @return
-     */
     public Page<Question> getList(int page) {
         List<Sort.Order> sorts = new ArrayList<>();
         sorts.add(Sort.Order.desc("createDate"));
@@ -32,11 +27,6 @@ public class QuestionService {
         return this.questionRepository.findAll(pageable);
     }
 
-    /**
-     * id 값으로 Question 데이터를 조회한다.
-     * @param id Question PK
-     * @return 조회한 Question 데이터
-     */
     public Question getQuestion(Integer id) {
         Optional<Question> question = this.questionRepository.findById(id);
         if (question.isPresent()) {
@@ -46,10 +36,7 @@ public class QuestionService {
         }
     }
 
-    /**
-     * 제목과 내용을 입력받아서 질문 데이터를 저장한다.
-     */
-    public void create(String subject, String content) {
+    public void create(String subject, String content, SiteUser siteUser) {
         Question q = new Question();
         q.setSubject(subject);
         q.setContent(content);

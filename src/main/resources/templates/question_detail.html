@@ -23,7 +23,7 @@
             <div class="my-3">
                 <a href="javascript:void(0);"
                    class="recommend btn btn-sm btn-outline-secondary"
-                   th:data-uri="@{|/question/vote/$${question.id}|}">
+                   th:data-uri="@{|/question/vote/${question.id}|}">
                     추천
                     <span class="badge rounded-pill bg-success"
                           th:text="${#lists.size(question.voter)}"></span>

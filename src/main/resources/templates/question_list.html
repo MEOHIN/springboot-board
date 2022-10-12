@@ -2,6 +2,11 @@
 <html layout:decorate="~{layout}">
 <!-- 부모 템플릿 th:block 엘리먼트 내용을 자식 템플릿의 div 엘리먼트 내용으로 교체 -->
 <div layout:fragment="content" class="container my-3">
+    <div class="row my-3">
+        <div class="col-6">
+            <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
+        </div>
+    </div>
     <table class="table">
         <thead class="table-dark">
             <tr class="text-center">
@@ -60,7 +65,5 @@
         </ul>
     </div>
     <!-- 페이징처리 종료 -->
-
-    <a th:href="@{/question/create}" class="btn btn-primary">질문 등록하기</a>
 </div>
 </html>

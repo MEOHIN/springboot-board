@@ -25,8 +25,10 @@ public class QuestionController {
     private final UserService userService;
 
     @RequestMapping("/list")
-    public String list(Model model, @RequestParam(value = "page", defaultValue = "0") int page) {
-        Page<Question> paging = this.questionService.getList(page);
+    public String list(Model model,
+                       @RequestParam(value = "page", defaultValue = "0") int page,
+                       @RequestParam(value = "keyword", defaultValue = "") String keyword) {
+        Page<Question> paging = this.questionService.getList(page, keyword);
         model.addAttribute("paging", paging);
        return "question_list";
     }

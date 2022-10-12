@@ -30,6 +30,7 @@ public class QuestionController {
                        @RequestParam(value = "keyword", defaultValue = "") String keyword) {
         Page<Question> paging = this.questionService.getList(page, keyword);
         model.addAttribute("paging", paging);
+        model.addAttribute("keyword", keyword);
        return "question_list";
     }
 
